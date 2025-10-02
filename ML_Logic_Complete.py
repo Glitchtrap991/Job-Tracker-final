@@ -176,7 +176,8 @@ async def recommend_jobs(file: UploadFile = File(...)):
     elif file_type == "docx":
         try:
             # docx2txt.process expects a path or a BytesIO object for the docx file
-            resume_text = docx2txt.process(io.BytesIO(file_content)).decode("utf-8")
+            resume_text = docx2txt.process(io.BytesIO(file_content))
+
         except:
             return {"status": "error", "message": "Failed to parse DOCX content."}
     else:
